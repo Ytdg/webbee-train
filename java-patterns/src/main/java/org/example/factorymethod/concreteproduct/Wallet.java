@@ -3,6 +3,13 @@ package org.example.factorymethod.concreteproduct;
 import org.example.factorymethod.DetailWalletOwner;
 import java.util.UUID;
 
+/**
+ * <p>Product</p>
+ * Абстрактрный класс для работы с кошельком, не знает что за кошелек.
+ * <p>Обязательный конструктор содержит информацию пользователя</p>
+ * id - уникальный идендификатор кошелька
+ * <p>verify - верефицирован ли кошелк</p>
+ * */
 public abstract class Wallet {
 
     private final UUID id = UUID.randomUUID();

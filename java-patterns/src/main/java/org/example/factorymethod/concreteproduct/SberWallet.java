@@ -3,6 +3,9 @@ package org.example.factorymethod.concreteproduct;
 import org.example.factorymethod.DetailWalletOwner;
 import java.util.Objects;
 
+/**
+ * docs {@link VtbWallet}
+ */
 public class SberWallet extends Wallet {
 
     public SberWallet(DetailWalletOwner detailWalletOwner) {

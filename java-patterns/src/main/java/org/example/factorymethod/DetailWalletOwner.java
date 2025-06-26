@@ -1,6 +1,12 @@
 package org.example.factorymethod;
 
 import java.util.Objects;
+/**
+ * Класс содержащий информацию пользователя любого кошелька
+ * @param name - имя владелца кошелька
+ * @param lastName - фамилия владелца кошелька
+ * @param age - возраст владелца кошелька
+ * */
 
 public record DetailWalletOwner(String name, String lastName, int age) {
 

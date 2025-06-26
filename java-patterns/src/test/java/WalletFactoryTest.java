@@ -9,6 +9,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertThrows;
 
+/**
+ * Тесты не валидных данных на исключения IllegalArgumentException
+ * <p>Тесты создания кошельков разных групп</p>
+ * Исключения не выбрасывает.
+ * */
 public class WalletFactoryTest {
 
     @Test

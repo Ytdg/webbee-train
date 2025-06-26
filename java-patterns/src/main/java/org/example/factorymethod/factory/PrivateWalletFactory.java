@@ -6,8 +6,16 @@ import org.example.factorymethod.concreteproduct.SberWallet;
 import org.example.factorymethod.concreteproduct.VtbWallet;
 import org.example.factorymethod.concreteproduct.Wallet;
 
+/**
+ * ConcreteCreator:
+ * Класс реализует логику создания эксземпляров частных кошельков
+ * */
 public class PrivateWalletFactory extends AbstractWalletFactory {
 
+    /**
+     * @param typeWallet - тип кошелька под цели
+     * @param detailWalletOwner - информация пользователя
+     * */
     @Override
     protected Wallet createWallet(TypeWallet typeWallet, DetailWalletOwner detailWalletOwner) {
 
