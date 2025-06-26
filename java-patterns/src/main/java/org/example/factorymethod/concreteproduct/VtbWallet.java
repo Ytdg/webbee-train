@@ -11,7 +11,7 @@ public class VtbWallet extends Wallet {
 
     @Override
     public void verify() {
-        this.setVerify(!this.getDetailWalletOwner().lastName().isBlank());
+        this.setVerify(getDetailWalletOwner().age() > 18); //can be to super class
     }
 
 }
