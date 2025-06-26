@@ -10,9 +10,12 @@ public class PrivateWalletFactory extends AbstractWalletFactory {
 
     @Override
     protected Wallet createWallet(TypeWallet typeWallet, DetailWalletOwner detailWalletOwner) {
+
         return switch (typeWallet) {
             case YOURSELF -> new SberWallet(detailWalletOwner);
             case BUSINESS -> new VtbWallet(detailWalletOwner);
         };
+
     }
+
 }
