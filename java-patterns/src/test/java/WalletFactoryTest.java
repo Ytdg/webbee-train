@@ -7,48 +7,55 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertThrows;
+
 public class WalletFactoryTest {
 
     @Test
     public void createPublicWalletFactory() {
         AbstractWalletFactory walletFactory = new PublicWalletFactory();
-        createWallet(walletFactory,TypeWallet.YOURSELF);
-        createWallet(walletFactory,TypeWallet.BUSINESS);
+        createWallet(walletFactory, TypeWallet.YOURSELF);
+        createWallet(walletFactory, TypeWallet.BUSINESS);
     }
 
     @Test
     public void createPrivateWalletFactory() {
         AbstractWalletFactory walletFactory = new PublicWalletFactory();
-        createWallet(walletFactory,TypeWallet.YOURSELF);
-        createWallet(walletFactory,TypeWallet.BUSINESS);
+        createWallet(walletFactory, TypeWallet.YOURSELF);
+        createWallet(walletFactory, TypeWallet.BUSINESS);
     }
+
 
 
     void createWallet(AbstractWalletFactory creator, TypeWallet typeWallet) {
-        Wallet wallet = creator.orderWallet(typeWallet,withValidDetailWalletOwner());
+
+        Wallet wallet = creator.orderWallet(typeWallet, withValidDetailWalletOwner());
         Assert.assertTrue(wallet.isVerify());
-        wallet=creator.orderWallet(typeWallet,withNotValidNameDetailWalletOwner());
-        Assert.assertFalse(wallet.isVerify());
-        wallet=creator.orderWallet(typeWallet,withNotValidDetailWalletOwner());
-        Assert.assertFalse(wallet.isVerify());
-        wallet=creator.orderWallet(typeWallet,withNotValidLastNameDetailWalletOwner());
-        Assert.assertFalse(wallet.isVerify());
+        assertThrows(IllegalArgumentException.class, () -> {
+            creator.orderWallet(typeWallet, withNotValidNameDetailWalletOwner());
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            creator.orderWallet(typeWallet, withNotValidLastNameDetailWalletOwner());
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            creator.orderWallet(typeWallet, withNotValidDetailWalletOwner());
+        });
     }
 
     DetailWalletOwner withValidDetailWalletOwner() {
-        return new DetailWalletOwner("Alexand", "Brunov");
+        return new DetailWalletOwner("Alexand", "Brunov", 19);
     }
 
     DetailWalletOwner withNotValidNameDetailWalletOwner() {
-        return new DetailWalletOwner("", "Brunov");
+        return new DetailWalletOwner("", "Brunov", 19);
     }
 
     DetailWalletOwner withNotValidLastNameDetailWalletOwner() {
-        return new DetailWalletOwner("Alexandr", "");
+        return new DetailWalletOwner("Alexandr", "", 19);
     }
 
     DetailWalletOwner withNotValidDetailWalletOwner() {
-        return new DetailWalletOwner("", "");
+        return new DetailWalletOwner("", "", 0);
     }
 
 }
