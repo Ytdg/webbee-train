@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RequestHandlerTest {
     @Test
-    public void testChainHandlerRequestInOrder() {
+     void testChainHandlerRequestInOrder() {
         AbstractHandlerRequest sessionTimeOutHandler = createSessionTimeOutHandler(s -> {
         });
         AbstractHandlerRequest sessionDestroyHandler = createSessionDestroyHandler(s -> {
