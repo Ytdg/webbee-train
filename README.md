@@ -8,7 +8,7 @@ This repository contains 6 patterns
 
 - [FactoryMethod]
 - [Chain of Responsibility]
-- [Flyweight]
+- [Proxy]
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 
