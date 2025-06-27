@@ -9,6 +9,7 @@ This repository contains 6 patterns
 - [FactoryMethod]
 - [Chain of Responsibility]
 - [Proxy]
+- [Iterator]
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 
