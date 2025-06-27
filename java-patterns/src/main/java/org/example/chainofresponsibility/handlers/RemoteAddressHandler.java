@@ -18,10 +18,12 @@ public class RemoteAddressHandler extends AbstractHandlerRequest {
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
         logger.info("handler:" + RemoteAddressHandler.class.getName());
-        if (!BLOCKED_HOST_NAMES.contains(servletRequest.getIpAddress().getHostAddress())) {
+        if (!BLOCKED_HOST_NAMES.contains(servletRequest.getIpAddress().getHostName())) {
             System.out.println("Request allowed");
             super.handleServletRequest(servletRequest);
+            return;
         }
+        System.out.println("Request not allowed");
 
     }
 
