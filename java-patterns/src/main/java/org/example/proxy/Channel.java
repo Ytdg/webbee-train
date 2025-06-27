@@ -1,21 +1,16 @@
 package org.example.proxy;
 
 import java.util.Objects;
+import java.util.UUID;
 
-public class Channel<T> {
+public record Channel<T>(T[] partialData, UUID uuid) {
 
-    private final T[] partialData;
-
-    public Channel(T[] partialData) {
+    public Channel {
         Objects.requireNonNull(partialData);
         if (partialData.length != 10) {
             throw new IllegalArgumentException("[] length is not 10");
         }
-        this.partialData = partialData;
-    }
-
-    public T[] getPartialData() {
-        return partialData;
+        uuid = UUID.randomUUID();
     }
 
 }
