@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RequestHandlerTest {
+class RequestHandlerTest {
     @Test
      void testChainHandlerRequestInOrder() {
         AbstractHandlerRequest sessionTimeOutHandler = createSessionTimeOutHandler(s -> {
