@@ -3,23 +3,22 @@ package org.example.proxy;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
 public class CodeCollector implements DataCollector<Channel<NumberSecret>> {
 
     private static final Logger LOGGER = Logger.getLogger(CodeCollector.class.getName());
 
     @Override
-    public boolean acceptData(Channel<NumberSecret> data, Consumer<String> transferResultData) {
+    public boolean acceptData(Channel<NumberSecret> data, Consumer<String> extractData) {
         Objects.requireNonNull(data);
         boolean isSuccessfully = true;
-        for (NumberSecret num : data.getPartialData()
+        for (NumberSecret num : data.partialData()
         ) {
-            Optional<Long> decodeNum = decode(num.getEncryptedNumber());
+            Optional<Long> decodeNum = decode(num.encryptedNumber());
             if (decodeNum.isEmpty()) {
                 isSuccessfully = false;
             } else {
-                transferResultData.accept(decodeNum.get() + "ID:" + num.getUuid().toString());
+                extractData.accept(decodeNum.get() + "|ID_CHANNEL:" + data.uuid().toString());
             }
         }
         // save to file example
@@ -39,24 +38,5 @@ public class CodeCollector implements DataCollector<Channel<NumberSecret>> {
 
     }
 
-    @Override
-    public Optional<String> getDataById(String id) {
-        Objects.requireNonNull(id);
-        return getStreamResult()
-                .filter(s -> {
-                    String[] parts = s.split(" ID:");
-                    if (parts.length > 1) {
-                        return parts[1].equals(id);
-                    }
-                    return false;
-                })
-                .findFirst();
-
-    }
-
-    @Override
-    public Stream<String> getStreamResult() {
-        return Stream.empty(); // it's implementation for read file or other api where data (Thread.sleep example)
-    }
 
 }
