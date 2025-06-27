@@ -12,10 +12,7 @@ import org.example.factorymethod.concreteproduct.Wallet;
  * */
 public class PrivateWalletFactory extends AbstractWalletFactory {
 
-    /**
-     * @param typeWallet - тип кошелька под цели
-     * @param detailWalletOwner - информация пользователя
-     * */
+
     @Override
     protected Wallet createWallet(TypeWallet typeWallet, DetailWalletOwner detailWalletOwner) {
 

@@ -13,16 +13,19 @@ import org.example.factorymethod.concreteproduct.Wallet;
  * */
 public abstract class AbstractWalletFactory {
 
-    /**
-     * вызывает фабричный метод createWallet, его реализуют дочерние классы.
-     * <p>проводит верификацию кошелька</p>
-     * */
+
     public Wallet orderWallet(TypeWallet typeWallet, DetailWalletOwner detailWalletOwner) {
         Wallet wallet = createWallet(typeWallet, detailWalletOwner);
-        wallet.verify();
+        wallet.verify(); //verification wallet
         return wallet;
     }
 
+    /**
+     * Фабричный метод создания кошелька.
+     *
+     * @param typeWallet - тип кошелька под цели. Значение может быть любым.
+     * @param detailWalletOwner - информация пользователя.
+     * */
     protected abstract Wallet createWallet(TypeWallet typeWallet, DetailWalletOwner detailWalletOwner);
 
 }
