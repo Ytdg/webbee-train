@@ -6,9 +6,6 @@ import java.util.stream.Stream;
 
 public interface DataCollector<T> {
 
-    boolean acceptData(T data, Consumer<String> transferResulData);
+    boolean acceptData(T data, Consumer<String> extractData);
 
-    Stream<String> getStreamResult();
-
-    Optional<String> getDataById(String id);
 }
