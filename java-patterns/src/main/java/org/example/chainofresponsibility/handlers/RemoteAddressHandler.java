@@ -5,9 +5,13 @@ import org.example.chainofresponsibility.ServletRequest;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * ConcreteHandler
+ * <p>Роль фильтра. Работает с удаленным адресом.</p>
+ * */
 public class RemoteAddressHandler extends AbstractHandlerRequest {
 
-    private static final List<String> BLOCKED_HOST_NAMES = List.of("test.com", "google.com", "smtp.gmail.com");
+    private static final List<String> BLOCKED_HOST_NAMES = List.of("test.com", "google.com", "smtp.gmail.com"); //field it's static, because can be more 1 instance
 
     private static final Logger LOGGER = Logger.getLogger(RemoteAddressHandler.class.getName());
 
@@ -15,6 +19,10 @@ public class RemoteAddressHandler extends AbstractHandlerRequest {
 
     }
 
+    /**
+     * Если request имеет разрешенный hostName, запрос передается следующему обработчику.
+     * @param servletRequest объект, полученный от предыдущего обработчика или от клиента.
+     */
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
         LOGGER.info("handler:" + RemoteAddressHandler.class.getName());

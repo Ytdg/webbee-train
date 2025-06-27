@@ -5,6 +5,10 @@ import org.example.chainofresponsibility.StatusSession;
 
 import java.util.logging.Logger;
 
+/**
+ * ConcreteHandler
+ * <p>Обработчик завершенной сессии</p>
+ * */
 public class SessionDestroyHandler extends AbstractHandlerRequest {
 
     public SessionDestroyHandler() {
@@ -13,6 +17,12 @@ public class SessionDestroyHandler extends AbstractHandlerRequest {
 
     private static final Logger LOGGER = Logger.getLogger(SessionDestroyHandler.class.getName());
 
+    /**
+     * "Очищает сессию", если статус сессии равен COMPLETED,
+     * или передает следующему обработчику
+     *
+     * @param servletRequest объект, полученный от предыдущего обработчика или от клиента.
+     */
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
         LOGGER.info("handler:" + SessionDestroyHandler.class.getName());

@@ -14,6 +14,10 @@ import java.util.function.Consumer;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Тесты проверяют цепочку handlers.
+ * <p>Исключения не выбрасывают</p>
+ * */
 class RequestHandlerTest {
     @Test
      void testChainHandlerRequestInOrder() {

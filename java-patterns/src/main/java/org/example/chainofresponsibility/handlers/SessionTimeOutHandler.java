@@ -7,6 +7,10 @@ import org.example.chainofresponsibility.StatusSession;
 import java.util.Objects;
 import java.util.logging.Logger;
 
+/**
+ * ConcreteHandler
+ * <p>Обработчик сессии с временным жизненым циклом</p>
+ * */
 public class SessionTimeOutHandler extends AbstractHandlerRequest {
 
     public SessionTimeOutHandler() {
@@ -15,6 +19,12 @@ public class SessionTimeOutHandler extends AbstractHandlerRequest {
 
     private static final Logger LOGGER = Logger.getLogger(SessionTimeOutHandler.class.getName());
 
+    /**
+     * "Записывает в файл" полезную нагрузку сессии, если статус сессии равен TEMPORARY,
+     * или передает следующему обработчику
+     *
+     * @param servletRequest объект, полученный от предыдущего обработчика или от клиента.
+     */
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
         LOGGER.info("handler:" + SessionTimeOutHandler.class.getName());
