@@ -9,7 +9,7 @@ public class RemoteAddressHandler extends AbstractHandlerRequest {
 
     private static final List<String> BLOCKED_HOST_NAMES = List.of("test.com", "google.com", "smtp.gmail.com");
 
-    private static final Logger logger = Logger.getLogger(RemoteAddressHandler.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(RemoteAddressHandler.class.getName());
 
     public RemoteAddressHandler() {
 
@@ -17,7 +17,7 @@ public class RemoteAddressHandler extends AbstractHandlerRequest {
 
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
-        logger.info("handler:" + RemoteAddressHandler.class.getName());
+        LOGGER.info("handler:" + RemoteAddressHandler.class.getName());
         if (!BLOCKED_HOST_NAMES.contains(servletRequest.getIpAddress().getHostName())) {
             System.out.println("Request allowed");
             super.handleServletRequest(servletRequest);

@@ -11,11 +11,11 @@ public class SessionDestroyHandler extends AbstractHandlerRequest {
 
     }
 
-    private static final Logger logger = Logger.getLogger(SessionDestroyHandler.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SessionDestroyHandler.class.getName());
 
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
-        logger.info("handler:" + SessionDestroyHandler.class.getName());
+        LOGGER.info("handler:" + SessionDestroyHandler.class.getName());
         if (servletRequest.getSession().statusSession().equals(StatusSession.COMPLETED)) {
             System.out.println("Session destroy");
             return;

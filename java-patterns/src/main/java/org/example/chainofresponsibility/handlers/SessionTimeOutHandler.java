@@ -13,11 +13,11 @@ public class SessionTimeOutHandler extends AbstractHandlerRequest {
 
     }
 
-    private static final Logger logger = Logger.getLogger(SessionTimeOutHandler.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SessionTimeOutHandler.class.getName());
 
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
-        logger.info("handler:" + SessionTimeOutHandler.class.getName());
+        LOGGER.info("handler:" + SessionTimeOutHandler.class.getName());
         Session session = servletRequest.getSession();
         if (session.statusSession().equals(StatusSession.TEMPORARY)) {
             System.out.println("Write to file payload:" + Objects.requireNonNull(session.payload()));
