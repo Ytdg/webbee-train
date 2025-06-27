@@ -4,8 +4,10 @@ import org.example.proxy.DataCollector;
 import org.example.proxy.NumberSecret;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import java.util.*;
-
+import java.util.UUID;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Base64;
 /**
  * Тесты извличения данных из канала (channel).
  * Исключения не выбрасывает.

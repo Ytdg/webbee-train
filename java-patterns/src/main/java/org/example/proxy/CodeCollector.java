@@ -1,9 +1,10 @@
 package org.example.proxy;
 
-import java.util.*;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Base64;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
-
 
 /**
  * Class - RealSubject.
@@ -48,6 +49,5 @@ public class CodeCollector implements DataCollector<Channel<NumberSecret>> {
         }
 
     }
-
 
 }

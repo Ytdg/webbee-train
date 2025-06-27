@@ -1,10 +1,10 @@
 package org.example.proxy;
 
-import java.util.*;
+import java.util.UUID;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
-
 
 /**
  * Class - Proxy.
@@ -37,7 +37,6 @@ public class CodeCollectorProxy implements DataCollector<Channel<NumberSecret>> 
         return isSuccessfully;
     }
 
-
     /**
      * Кэширует Уникальный id посредством записи в HashSet. Если id такой уже был, обращаться к RealSubjeсt не нужно для обработки
      * данных. Можно обратиться к другому (например, менее дорогостощему)
@@ -51,14 +50,13 @@ public class CodeCollectorProxy implements DataCollector<Channel<NumberSecret>> 
                 LOGGER.info("Proxy error extract for id channel:" + data.uuid());
                 return false;
             }
-        } else {
-            // extract data from other resource (redis as example)
         }
+        // extract data from other resource (redis as example)
         return true;
     }
-
 
     public void clearCache() {
         cacheCode = null; // method can be clear cache with schedule as example
     }
+
 }
