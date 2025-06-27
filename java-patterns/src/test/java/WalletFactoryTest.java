@@ -3,11 +3,9 @@ import org.example.factorymethod.TypeWallet;
 import org.example.factorymethod.concreteproduct.Wallet;
 import org.example.factorymethod.factory.AbstractWalletFactory;
 import org.example.factorymethod.factory.PublicWalletFactory;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.assertThrows;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Тесты не валидных данных на исключения IllegalArgumentException
@@ -17,14 +15,14 @@ import static org.junit.Assert.assertThrows;
 public class WalletFactoryTest {
 
     @Test
-    public void createPublicWalletFactory() {
+     void createPublicWalletFactory() {
         AbstractWalletFactory walletFactory = new PublicWalletFactory();
         createWallet(walletFactory, TypeWallet.YOURSELF);
         createWallet(walletFactory, TypeWallet.BUSINESS);
     }
 
     @Test
-    public void createPrivateWalletFactory() {
+     void createPrivateWalletFactory() {
         AbstractWalletFactory walletFactory = new PublicWalletFactory();
         createWallet(walletFactory, TypeWallet.YOURSELF);
         createWallet(walletFactory, TypeWallet.BUSINESS);
@@ -35,7 +33,7 @@ public class WalletFactoryTest {
     void createWallet(AbstractWalletFactory creator, TypeWallet typeWallet) {
 
         Wallet wallet = creator.orderWallet(typeWallet, withValidDetailWalletOwner());
-        Assert.assertTrue(wallet.isVerify());
+        Assertions.assertTrue(wallet.isVerify());
         assertThrows(IllegalArgumentException.class, () -> {
             creator.orderWallet(typeWallet, withNotValidNameDetailWalletOwner());
         });
