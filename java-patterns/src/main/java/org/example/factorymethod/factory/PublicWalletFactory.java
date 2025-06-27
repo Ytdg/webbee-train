@@ -12,7 +12,6 @@ import org.example.factorymethod.concreteproduct.TWallet;
  * */
 public class PublicWalletFactory extends AbstractWalletFactory {
 
-
     @Override
     protected Wallet createWallet(TypeWallet typeWallet, DetailWalletOwner detailWalletOwner) {
 

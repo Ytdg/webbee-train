@@ -13,7 +13,6 @@ import org.example.factorymethod.concreteproduct.Wallet;
  * */
 public abstract class AbstractWalletFactory {
 
-
     public Wallet orderWallet(TypeWallet typeWallet, DetailWalletOwner detailWalletOwner) {
         Wallet wallet = createWallet(typeWallet, detailWalletOwner);
         wallet.verify(); //verification wallet
