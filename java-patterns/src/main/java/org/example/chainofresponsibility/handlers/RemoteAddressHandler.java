@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 /**
  * ConcreteHandler
  * <p>Роль фильтра. Работает с удаленным адресом.</p>
+ * @author  Nikita Bochkov
  * */
 public class RemoteAddressHandler extends AbstractHandlerRequest {
 

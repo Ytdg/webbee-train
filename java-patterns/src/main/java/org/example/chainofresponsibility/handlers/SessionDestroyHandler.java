@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 /**
  * ConcreteHandler
  * <p>Обработчик завершенной сессии</p>
+ * @author  Nikita Bochkov
  * */
 public class SessionDestroyHandler extends AbstractHandlerRequest {
 

@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * Объект отпровляемый клиентом.
+ * @author  Nikita Bochkov
  */
 public class ServletRequest {
 

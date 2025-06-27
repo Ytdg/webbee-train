@@ -6,6 +6,7 @@ import java.util.Objects;
  * @param id идендификатор сессии
  * @param payload полезная нагрузка сессии (nullable)
  * @param  statusSession статус сессии (not null)
+ * @author  Nikita Bochkov
  * */
 public record Session(long id, String payload, StatusSession statusSession) {
 

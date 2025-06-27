@@ -6,6 +6,7 @@ import java.util.Objects;
 /**
  * Handler
  * <p>Родитель для дочерних Handler. Работу паттерна можно сравнить с фильтрами</p>
+ * @author  Nikita Bochkov
  * */
 public class AbstractHandlerRequest { //an abstract class is used to avoid code duplication
 

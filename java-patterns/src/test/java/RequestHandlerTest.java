@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * Тесты проверяют цепочку handlers.
  * <p>Исключения не выбрасывают</p>
+ * @author Nikita Bochkov
  * */
 class RequestHandlerTest {
     @Test

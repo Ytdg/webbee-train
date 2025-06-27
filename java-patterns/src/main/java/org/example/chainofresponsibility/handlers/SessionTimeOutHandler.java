@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 /**
  * ConcreteHandler
  * <p>Обработчик сессии с временным жизненым циклом</p>
+ * @author  Nikita Bochkov
  * */
 public class SessionTimeOutHandler extends AbstractHandlerRequest {
 
