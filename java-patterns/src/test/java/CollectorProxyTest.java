@@ -4,9 +4,13 @@ import org.example.proxy.DataCollector;
 import org.example.proxy.NumberSecret;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
 
+/**
+ * Тесты извличения данных из канала (channel).
+ * Исключения не выбрасывает.
+ * @author Nikita Bochkov
+ * */
 class CollectorProxyTest {
 
     DataCollector<Channel<NumberSecret>> createInstanceProxy() {

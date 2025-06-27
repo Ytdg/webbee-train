@@ -4,10 +4,21 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 
+
+/**
+ * Class - RealSubject.
+ * <p>
+ *     Данный класс обрабатывает канал (Channel)
+ * </p>
+ * @author Nikita Bochkov
+ * */
 public class CodeCollector implements DataCollector<Channel<NumberSecret>> {
 
     private static final Logger LOGGER = Logger.getLogger(CodeCollector.class.getName());
 
+    /**
+     * метод извлекает из канала данные и декодирует их в строковой формат в виде числа и последовательно поставляет потребителю
+     * */
     @Override
     public boolean acceptData(Channel<NumberSecret> data, Consumer<String> extractData) {
         Objects.requireNonNull(data);
