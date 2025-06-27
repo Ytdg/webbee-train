@@ -5,13 +5,14 @@ import org.example.chainofresponsibility.handlers.AbstractHandlerRequest;
 import org.example.chainofresponsibility.handlers.RemoteAddressHandler;
 import org.example.chainofresponsibility.handlers.SessionDestroyHandler;
 import org.example.chainofresponsibility.handlers.SessionTimeOutHandler;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.net.UnknownHostException;
-import java.util.Random;
-import java.util.UUID;
 import java.util.function.Consumer;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RequestHandlerTest {
     @Test
@@ -24,14 +25,45 @@ public class RequestHandlerTest {
         AbstractHandlerRequest remoteAddressHandler = createRemoteAddressHandler(s -> {
             s.setNextHandler(sessionDestroyHandler);
         });
+        //remoteAddressHandler->sessionDestroy
+        assertDoesNotThrow(() -> {
+            remoteAddressHandler.handleServletRequest(createValidRequestWithSessionCompleted());
+        });
 
-        remoteAddressHandler.handleServletRequest(cre);
-        assertDoesNotThrow()
+        //message "Request not allowed"
+        assertDoesNotThrow(() -> {
+            remoteAddressHandler.handleServletRequest(createNotAccessRequestWithSessionCompleted());
+        });
+        //remoteAddress->sessionDestroy(skip)->sessionTimeOut
+        assertDoesNotThrow(() -> {
+            remoteAddressHandler.handleServletRequest(createValidRequestWithSessionTemporary());
+        });
+        //for state session "Temporary" always should be payload
+        assertThrows(NullPointerException.class,()->{
+            remoteAddressHandler.handleServletRequest(createNotValidPayloadRequestWithSessionTemporary());
+        });
     }
 
     ServletRequest createValidRequestWithSessionCompleted() throws UnknownHostException {
         ServletRequest servletRequest = new ServletRequest("localhost");
         servletRequest.setSession(new Session(1245L, null, StatusSession.COMPLETED));
+        return servletRequest;
+    }
+
+    ServletRequest createNotAccessRequestWithSessionCompleted() throws UnknownHostException {
+        ServletRequest servletRequest = new ServletRequest("google.com");
+        servletRequest.setSession(new Session(1245L, null, StatusSession.COMPLETED));
+        return servletRequest;
+    }
+
+    ServletRequest createValidRequestWithSessionTemporary() throws UnknownHostException {
+        ServletRequest servletRequest = new ServletRequest("localhost");
+        servletRequest.setSession(new Session(1245L, "payload", StatusSession.TEMPORARY));
+        return servletRequest;
+    }
+    ServletRequest createNotValidPayloadRequestWithSessionTemporary() throws UnknownHostException {
+        ServletRequest servletRequest = new ServletRequest("localhost");
+        servletRequest.setSession(new Session(1245L, null, StatusSession.TEMPORARY));
         return servletRequest;
     }
 
