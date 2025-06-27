@@ -17,7 +17,8 @@ public class AbstractHandlerRequest { //an abstract class is used to avoid code 
 
     /**
      * Реальзует переход к следующему handler .
-     * @param servletRequest объект, полученный от класса - насследника.
+     * @param servletRequest объект обрабатывается классом-наследником либо передается к следующему handler, если
+     * текущий не может обработать.
      */
     public void handleServletRequest(ServletRequest servletRequest) {
 

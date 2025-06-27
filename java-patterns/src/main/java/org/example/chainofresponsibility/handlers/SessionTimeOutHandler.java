@@ -21,9 +21,6 @@ public class SessionTimeOutHandler extends AbstractHandlerRequest {
 
     /**
      * "Записывает в файл" полезную нагрузку сессии, если статус сессии равен TEMPORARY,
-     * или передает следующему обработчику
-     *
-     * @param servletRequest объект, полученный от предыдущего обработчика или от клиента.
      */
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {

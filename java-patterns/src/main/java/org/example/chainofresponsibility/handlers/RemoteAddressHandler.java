@@ -21,7 +21,6 @@ public class RemoteAddressHandler extends AbstractHandlerRequest {
 
     /**
      * Если request имеет разрешенный hostName, запрос передается следующему обработчику.
-     * @param servletRequest объект, полученный от предыдущего обработчика или от клиента.
      */
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {

@@ -19,9 +19,6 @@ public class SessionDestroyHandler extends AbstractHandlerRequest {
 
     /**
      * "Очищает сессию", если статус сессии равен COMPLETED,
-     * или передает следующему обработчику
-     *
-     * @param servletRequest объект, полученный от предыдущего обработчика или от клиента.
      */
     @Override
     public void handleServletRequest(ServletRequest servletRequest) {
