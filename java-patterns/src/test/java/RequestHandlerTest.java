@@ -5,7 +5,6 @@ import org.example.chainofresponsibility.handlers.AbstractHandlerRequest;
 import org.example.chainofresponsibility.handlers.RemoteAddressHandler;
 import org.example.chainofresponsibility.handlers.SessionDestroyHandler;
 import org.example.chainofresponsibility.handlers.SessionTimeOutHandler;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.net.UnknownHostException;
