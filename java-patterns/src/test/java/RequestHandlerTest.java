@@ -1,9 +1,16 @@
+import org.example.chainofresponsibility.ServletRequest;
+import org.example.chainofresponsibility.Session;
+import org.example.chainofresponsibility.StatusSession;
 import org.example.chainofresponsibility.handlers.AbstractHandlerRequest;
 import org.example.chainofresponsibility.handlers.RemoteAddressHandler;
 import org.example.chainofresponsibility.handlers.SessionDestroyHandler;
 import org.example.chainofresponsibility.handlers.SessionTimeOutHandler;
+import org.junit.Assert;
 import org.junit.Test;
 
+import java.net.UnknownHostException;
+import java.util.Random;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public class RequestHandlerTest {
@@ -17,6 +24,15 @@ public class RequestHandlerTest {
         AbstractHandlerRequest remoteAddressHandler = createRemoteAddressHandler(s -> {
             s.setNextHandler(sessionDestroyHandler);
         });
+
+        remoteAddressHandler.handleServletRequest(cre);
+        assertDoesNotThrow()
+    }
+
+    ServletRequest createValidRequestWithSessionCompleted() throws UnknownHostException {
+        ServletRequest servletRequest = new ServletRequest("localhost");
+        servletRequest.setSession(new Session(1245L, null, StatusSession.COMPLETED));
+        return servletRequest;
     }
 
     RemoteAddressHandler createRemoteAddressHandler(Consumer<AbstractHandlerRequest> changeHandler) {
