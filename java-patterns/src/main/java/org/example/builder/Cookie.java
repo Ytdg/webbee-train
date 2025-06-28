@@ -8,27 +8,7 @@ public class Cookie {
     private final String language;
     private final String domain;
 
-    public long getIdSession() {
-        return idSession;
-    }
-
-    public String getActivePage() {
-        return activePage;
-    }
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public boolean isAuthenticated() {
-        return authenticated;
-    }
-
-    public Cookie(Builder builder) {
+    private Cookie(Builder builder) {
         this.domain = builder.domain;
         this.idSession = builder.idSession;
         this.language = builder.language;
@@ -42,16 +22,16 @@ public class Cookie {
                 + "\nActive Page:" + activePage
                 + "\nId session:" + idSession
                 + "\nLanguage:" + language +
-                "\nDomain" + domain;
+                "\nDomain:" + domain;
     }
 
     public static class Builder {
 
         private final boolean authenticated; // required
-        private String activePage = "none";
-        private long idSession = -1L;
-        private String language = "none";
-        private String domain = "none";
+        private String activePage;
+        private long idSession;
+        private String language;
+        private String domain;
 
         public Builder(boolean authenticated) {
             this.authenticated = authenticated;
@@ -75,6 +55,10 @@ public class Cookie {
         public Builder domain(String domain) {
             this.domain = domain;
             return this;
+        }
+
+        public Cookie build() {
+            return new Cookie(this);
         }
 
     }
