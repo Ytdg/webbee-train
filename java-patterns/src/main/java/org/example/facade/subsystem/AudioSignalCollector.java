@@ -10,10 +10,11 @@ import java.util.stream.IntStream;
 /**
  * SubSystem.
  * <p>
- *     Реализует получение битов с разных источников
+ * Реализует получение битов с разных источников
  * </p>
- * @author  Nikita Bochkov
- * */
+ *
+ * @author Nikita Bochkov
+ */
 public class AudioSignalCollector {
 
     private final Driver driverFlash = new Driver();
@@ -23,18 +24,19 @@ public class AudioSignalCollector {
 
     public AudioSignalCollector() {
         // driver flash
-        long ID_FLASH_DRIVE = 1234141L;
-        driverFlash.connect(ID_FLASH_DRIVE); // of course, need closing connect for descriptors
+        long idFlashDrive = 1234141L;
+        driverFlash.connect(idFlashDrive); // of course, need closing connect for descriptors
         // driver database
-        long ID_DATABASE_DRIVE = 3245235L;
-        driverDatabase.connect(ID_DATABASE_DRIVE);
+        long idDatabaseDrive = 3245235L;
+        driverDatabase.connect(idDatabaseDrive);
     }
 
     /**
      * чтение битов из источников
-     * @param  reader имеет реализацию Driver
+     *
+     * @param reader имеет реализацию Driver
      * @return возврощает поток битов
-     * */
+     */
     private IntStream read(Reader reader) {
         return reader.readBits().stream().flatMapToInt(Arrays::stream);
     }
@@ -55,9 +57,10 @@ interface Reader {
 
     /**
      * метод описывает чтение битов
-     * @return  список из массивов битов
-     * */
+     * @return список из массивов битов
+     */
     List<int[]> readBits();
+
 }
 
 class Driver implements Reader {

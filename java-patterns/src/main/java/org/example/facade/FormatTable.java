@@ -8,7 +8,11 @@ import java.util.Objects;
  * Класс реализует представление результатов
  * @author Nikita Bochkov
  * */
-public class FormatTable {
+public final class FormatTable {
+
+    private FormatTable() {
+
+    }
 
     /**
      * Метод создает таблицу - строку в формате Html.

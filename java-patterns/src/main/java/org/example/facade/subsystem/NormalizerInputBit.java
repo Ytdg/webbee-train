@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
  * @author Nikita Bochkov
  * */
 public class NormalizerInputBit {
+
     private final Random random = new Random();
 
     public DoubleStream normalize(IntStream intStream) {
