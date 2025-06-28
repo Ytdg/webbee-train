@@ -11,6 +11,7 @@ This repository contains 6 patterns
 - [Proxy]
 - [Iterator]
 - [Facade]
+- [Builder]
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 
