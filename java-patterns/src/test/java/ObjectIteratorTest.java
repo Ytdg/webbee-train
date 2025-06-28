@@ -1,13 +1,15 @@
 import org.example.iterator.ObjectCollection;
-import org.example.iterator.ObjectIterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
 
+/**
+ * Тесты итератора и работы с коллекцией. Не выбрасывают исключений.
+ * @author Nikita Bochkov
+ * */
 class ObjectIteratorTest {
+
     @Test
     void testIteratorWithDefaultNotThrowsAndEquals() {
         ObjectCollection<Integer> objectCollection = createInstanceWithObjects(1000);
@@ -75,4 +77,5 @@ class ObjectIteratorTest {
         }
         return copy;
     }
+
 }

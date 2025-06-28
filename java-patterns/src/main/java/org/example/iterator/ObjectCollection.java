@@ -5,7 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * ConcreteAggregate.
+ * Реализует базовую логику работы коллекции.
+ * @author  Nikita Bochkov
+ * */
 public class ObjectCollection<T> implements Aggregate<T> {
+
     private final List<T> objects = new ArrayList<>();
 
     public void addObject(T object) {
@@ -16,8 +22,6 @@ public class ObjectCollection<T> implements Aggregate<T> {
     public void remove(int index) {
         objects.remove(index);
     }
-
-
 
     public int size() {
         return objects.size();
