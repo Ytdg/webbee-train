@@ -1,0 +1,27 @@
+package org.example.iterator;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+
+public class ObjectCollection<T> implements Aggregate<T> {
+    private final List<T> objects = new ArrayList<>();
+
+    public void addObject(T object) {
+        Objects.requireNonNull(object);
+    }
+
+    public void remove(int index) {
+        objects.remove(index);
+    }
+
+    public T get(int index) {
+        return objects.get(index);
+    }
+
+    @Override
+    public Iterator<T> createIterator() {
+        return new ObjectIterator<>(objects);
+    }
+}
