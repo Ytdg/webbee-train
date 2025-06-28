@@ -1,6 +1,10 @@
 import org.example.builder.Cookie;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Тест демонстрирует создание Cookie.
+ * @author  Nikita Bochkov
+ * */
 public class CookieBuilderTest {
 
     @Test

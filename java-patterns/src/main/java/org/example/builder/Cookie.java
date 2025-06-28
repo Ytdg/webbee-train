@@ -1,5 +1,9 @@
 package org.example.builder;
 
+/**
+ * Объект, создаваемый Builder
+ * @author  Nikita Bochkov
+ * */
 public class Cookie {
 
     private final boolean authenticated; // required
@@ -25,6 +29,9 @@ public class Cookie {
                 "\nDomain:" + domain;
     }
 
+    /**
+     * Builder паттерн можно сравнить с созданием Response (по цепочке устанавливать property).
+     * */
     public static class Builder {
 
         private final boolean authenticated; // required
@@ -57,6 +64,9 @@ public class Cookie {
             return this;
         }
 
+        /**
+         * метод заканчивать цепочку установки property
+         */
         public Cookie build() {
             return new Cookie(this);
         }
