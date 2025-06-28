@@ -11,7 +11,7 @@ import java.util.Iterator;
 class ObjectIteratorTest {
 
     @Test
-    void testIteratorWithDefaultNotThrowsAndEquals() {
+    void testIterator_withDefaultObjectsNotThrows_andCheckEqualsOrigArrayAndIteratorArray() {
         ObjectCollection<Integer> objectCollection = createInstanceWithObjects(1000);
         Iterator<Integer> iterator = objectCollection.createIterator();
         Assertions.assertDoesNotThrow(() -> {
@@ -23,7 +23,7 @@ class ObjectIteratorTest {
     }
 
     @Test
-    void testIteratorWithEditableCollection() {
+    void testIterator_withEditableCollection_doesThrowIllegalStateException() {
         ObjectCollection<Integer> objectCollection = createInstanceWithObjects(1);
         Iterator<Integer> iterator = objectCollection.createIterator();
 
@@ -41,7 +41,7 @@ class ObjectIteratorTest {
     }
 
     @Test
-    void testOperationObjectCollectionWithThrow() {
+    void testRemoveObjectCollection_withThrowIndexOutOfBoundsException() {
         ObjectCollection<Integer> objectCollection = createInstanceWithObjects(100);
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> objectCollection.remove(-10));
     }
