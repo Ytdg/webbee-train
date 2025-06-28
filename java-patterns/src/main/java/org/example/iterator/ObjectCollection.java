@@ -10,18 +10,22 @@ public class ObjectCollection<T> implements Aggregate<T> {
 
     public void addObject(T object) {
         Objects.requireNonNull(object);
+        objects.add(object);
     }
 
     public void remove(int index) {
         objects.remove(index);
     }
 
-    public T get(int index) {
-        return objects.get(index);
+
+
+    public int size() {
+        return objects.size();
     }
 
     @Override
     public Iterator<T> createIterator() {
         return new ObjectIterator<>(objects);
     }
+
 }
