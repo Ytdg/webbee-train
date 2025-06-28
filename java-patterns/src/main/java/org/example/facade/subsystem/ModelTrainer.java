@@ -5,15 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
 public class ModelTrainer {
 
-    private HashMap<Integer, List<Double>> weights = new HashMap<>();
+    private HashMap<Double, List<Double>> weights = new HashMap<>();
     private static final Logger LOGGER = Logger.getLogger(ModelTrainer.class.getName());
     private final Random random = new Random();
 
-    public HashMap<Integer, List<Double>> train(IntStream bits) {
+    public HashMap<Double, List<Double>> train(DoubleStream bits) {
         // train...
         bits.forEach(s -> {
             if (!weights.containsKey(s)) { // values are expected to be unique to the weights
@@ -38,9 +39,9 @@ public class ModelTrainer {
         return vectorWeights;
     }
 
-    private HashMap<Integer, List<Double>> copy() {
-        HashMap<Integer, List<Double>> copyMap = new HashMap<>();
-        for (Integer key : weights.keySet()) {
+    private HashMap<Double, List<Double>> copy() {
+        HashMap<Double, List<Double>> copyMap = new HashMap<>();
+        for (Double key : weights.keySet()) {
             List<Double> originalList = weights.get(key);
             List<Double> copiedList = new ArrayList<>(originalList);
             copyMap.put(key, copiedList);

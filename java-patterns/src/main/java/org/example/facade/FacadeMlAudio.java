@@ -17,7 +17,7 @@ public class FacadeMlAudio {
     private final ModelTrainer modelTrainer;
     private final NormalizerInputBit normalizerInputBit;
     private static final Logger LOGGER = Logger.getLogger(FacadeMlAudio.class.getName());
-    private HashMap<Integer, List<Double>> resultWeights = null;
+    private HashMap<Double, List<Double>> resultWeights = null;
 
     public FacadeMlAudio() {
         this.audioSignalCollector = new AudioSignalCollector();
@@ -33,7 +33,7 @@ public class FacadeMlAudio {
         IntStream bits = getCollectedBits();
         DoubleStream normalizeBits = normalizerInputBit.normalize(bits);
         // can be more logic
-        this.resultWeights = modelTrainer.train(bits);
+        this.resultWeights = modelTrainer.train(normalizeBits);
     }
 
     public String generateHtmlTable() {

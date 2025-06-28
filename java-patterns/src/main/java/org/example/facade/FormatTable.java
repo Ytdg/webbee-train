@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class FormatTable {
 
-    public static String createTable(HashMap<Integer, List<Double>> data) {
+    public static String createTable(HashMap<Double, List<Double>> data) { // can be safe to file as example
         Objects.requireNonNull(data);
         StringBuilder html = new StringBuilder();
         html.append("<table>\n");
 
         html.append("  <tr>\n");
         html.append("    <th>Input data</th>\n");
-        for (Integer key : data.keySet()) {
+        for (Double key : data.keySet()) {
             html.append("    <th>").append(key).append("</th>\n");
         }
         html.append("  </tr>\n");
@@ -22,7 +22,7 @@ public class FormatTable {
         for (int i = 0; i < maxListSize; i++) {
             html.append("  <tr>\n");
             html.append("    <td>Weight ").append(i + 1).append("</td>\n");
-            for (Integer key : data.keySet()) {
+            for (Double key : data.keySet()) {
                 List<Double> values = data.get(key);
                 html.append("    <td>");
                 if (i < values.size()) {
