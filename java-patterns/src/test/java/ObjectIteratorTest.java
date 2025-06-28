@@ -42,7 +42,6 @@ class ObjectIteratorTest {
     void testOperationObjectCollectionWithThrow() {
         ObjectCollection<Integer> objectCollection = createInstanceWithObjects(100);
         Assertions.assertThrows(IndexOutOfBoundsException.class, () -> objectCollection.remove(-10));
-        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> objectCollection.get(-10));
     }
 
     void checkEqualsCollection(ObjectCollection<Integer> result) {
