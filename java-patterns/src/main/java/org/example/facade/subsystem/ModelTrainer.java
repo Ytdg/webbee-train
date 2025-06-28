@@ -6,8 +6,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
 
+/**
+ * SubSystem
+ * <p>
+ * Класс реализует обучение модели на входящих битах
+ * </p>
+ * @author  Nikita Bochkov
+ * */
 public class ModelTrainer {
 
     private HashMap<Double, List<Double>> weights = new HashMap<>();
@@ -30,6 +36,10 @@ public class ModelTrainer {
         LOGGER.info("Reset weights");
     }
 
+    /**
+     * метод создает вектор весов
+     * @return  вектор double
+     * */
     private List<Double> createWeightsVector() {
         List<Double> vectorWeights = new ArrayList<>();
         for (int i = 0; i < random.nextInt(50) + 1; i++) {
@@ -39,6 +49,10 @@ public class ModelTrainer {
         return vectorWeights;
     }
 
+    /**
+     * метод реализует глубокое копирование полученных весов
+     * @return  полная копия оригинального HashMap
+     * */
     private HashMap<Double, List<Double>> copy() {
         HashMap<Double, List<Double>> copyMap = new HashMap<>();
         for (Double key : weights.keySet()) {

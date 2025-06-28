@@ -4,8 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Класс реализует представление результатов
+ * @author Nikita Bochkov
+ * */
 public class FormatTable {
 
+    /**
+     * Метод создает таблицу - строку в формате Html.
+     * @param data данные для представления. Ключ - Input data, значение - Weight <- имена в таблице.
+     * */
     public static String createTable(HashMap<Double, List<Double>> data) { // can be safe to file as example
         Objects.requireNonNull(data);
         StringBuilder html = new StringBuilder();

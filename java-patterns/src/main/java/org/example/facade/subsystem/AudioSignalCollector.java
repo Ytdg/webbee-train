@@ -7,6 +7,13 @@ import java.util.Random;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
+/**
+ * SubSystem.
+ * <p>
+ *     Реализует получение битов с разных источников
+ * </p>
+ * @author  Nikita Bochkov
+ * */
 public class AudioSignalCollector {
 
     private final Driver driverFlash = new Driver();
@@ -23,6 +30,11 @@ public class AudioSignalCollector {
         driverDatabase.connect(ID_DATABASE_DRIVE);
     }
 
+    /**
+     * чтение битов из источников
+     * @param  reader имеет реализацию Driver
+     * @return возврощает поток битов
+     * */
     private IntStream read(Reader reader) {
         return reader.readBits().stream().flatMapToInt(Arrays::stream);
     }
@@ -40,6 +52,11 @@ public class AudioSignalCollector {
 }
 
 interface Reader {
+
+    /**
+     * метод описывает чтение битов
+     * @return  список из массивов битов
+     * */
     List<int[]> readBits();
 }
 
