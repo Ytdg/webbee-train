@@ -10,6 +10,7 @@ This repository contains 6 patterns
 - [Chain of Responsibility]
 - [Proxy]
 - [Iterator]
+- [Facade]
 - [Maintainers](#maintainers)
 - [Contributing](#contributing)
 
