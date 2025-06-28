@@ -8,14 +8,23 @@ public class ObjectIterator<T> implements Iterator<T> {
 
     private final List<T> listObjects;
 
+    private final int size;
     private int index;
 
     ObjectIterator(List<T> listObjects) {
-        this.listObjects = listObjects;
+        this.listObjects =listObjects; // immutable list in time iteration
+        this.size = listObjects.size();
+    }
+
+    private void stateImmutableList() {
+        if (listObjects.size() != this.size) {
+            throw new IllegalStateException("immutable it time iteration");
+        }
     }
 
     @Override
     public boolean hasNext() {
+        stateImmutableList();
         return index < listObjects.size();
     }
 
