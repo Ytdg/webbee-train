@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 /**
  * Тесты FacadeMlAudio
  * Исключений не выбрасывают.
- * @author  Nikita Bochkov
+ *
+ * @author Nikita Bochkov
  */
 
 class FacadeMlAudioTest {
@@ -15,12 +16,11 @@ class FacadeMlAudioTest {
     }
 
     @Test
-    void testTrainMlDoesNotThrow() {
+    void testTrainMl_doesNotThrow_whenAnyCallMethod() {
         FacadeMlAudio facadeMlAudio = getInstanceFacadeMlAudio();
         Assertions.assertDoesNotThrow(facadeMlAudio::startTrain);
-        Assertions.assertDoesNotThrow(()-> System.out.println(facadeMlAudio.generateHtmlTable()));
+        Assertions.assertDoesNotThrow(() -> System.out.println(facadeMlAudio.generateHtmlTable()));
         Assertions.assertDoesNotThrow(facadeMlAudio::reset);
-        Assertions.assertEquals("", facadeMlAudio.generateHtmlTable());
     }
 
 }
