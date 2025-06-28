@@ -20,17 +20,17 @@ class CollectorProxyTest {
     }
 
     @Test
-    void testCreateInstanceChannelOnThrows() {
+    void testCreateChannel_withInvalidSecretNum_throwsIllegalArgumentException() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             new Channel<>(createValidNumberSecrets(110), UUID.randomUUID());
         });
         Assertions.assertDoesNotThrow(() -> {
-            new Channel<>(createValidNumberSecrets(10), UUID.randomUUID()); //count should be 10
+            new Channel<>(createValidNumberSecrets(10), UUID.randomUUID());
         });
     }
 
     @Test
-    void testProxyExtractValidData() {
+    void testProxyExtractSecretNum_withValidNumberSecretEncode() {
         DataCollector<Channel<NumberSecret>> proxy = createInstanceProxy();
         Channel<NumberSecret> channel = new Channel<>(createValidNumberSecrets(10), UUID.randomUUID());
         Assertions.assertTrue(proxy.acceptData(channel, System.out::println
@@ -38,7 +38,7 @@ class CollectorProxyTest {
     }
 
     @Test
-    void testProxyExtractNotValidData() {
+    void testProxyExtractSecretNum_withNotValidSecretEncode() {
         DataCollector<Channel<NumberSecret>> proxy = createInstanceProxy();
         Channel<NumberSecret> channel = new Channel<>(createValidNumberSecrets(10), UUID.randomUUID());
         channel.partialData()[0] = new NumberSecret("not valid");
