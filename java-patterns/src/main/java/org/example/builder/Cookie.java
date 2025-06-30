@@ -4,7 +4,7 @@ package org.example.builder;
  * Объект, создаваемый Builder
  * @author  Nikita Bochkov
  * */
-public class Cookie {
+public final class Cookie {
 
     private final boolean authenticated; // required
     private final String activePage;
